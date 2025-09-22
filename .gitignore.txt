@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Binaries
+*.dll
+*.exe
+*.db
+
+# Others
+*.log
+*.cache
