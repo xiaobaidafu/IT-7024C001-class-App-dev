@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    
+    
+<!--ChatGPT was use for debug-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daily_Wellness_Score_App.WellPage"
+             Title="WellPage">
+
+    <ContentPage.Resources> <!--Style-->
+        <Style x:Key="CardFrame" TargetType="Frame">
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="HasShadow" Value="True"/>
+        </Style>
+
+        <Style x:Key="ValueLabel" TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+        </Style>
+
+        <Style x:Key="BigScore" TargetType="Label">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+        <!--Crete Scroll view to meet the screen size issue-->
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+            <!--Create gender title-->
+            <Label Text="Select Gender"
+                   FontSize="Large"
+                   TextColor="#0a0e29"/>
+            <!--Grid session for gender-->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                <!--male seesion-->
+                <Frame Style="{StaticResource CardFrame}"
+                       BorderColor="#0a0e29"
+                       x:Name="FrameMale">
+                    <VerticalStackLayout Spacing="8">
+                        <Image Source="male.png"
+                               HeightRequest="100"
+                               HorizontalOptions="Center"/>
+                        <Label Text="Male"
+                               HorizontalOptions="Center"
+                               FontSize="Medium"/>
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <!--female session-->
+                <Frame Grid.Column="1"
+                       Style="{StaticResource CardFrame}"
+                       x:Name="FrameFemale">
+                    <VerticalStackLayout Spacing="8">
+                        <Image Source="female.png"
+                               HeightRequest="100"
+                               HorizontalOptions="Center"/>
+                        <Label Text="Female"
+                               HorizontalOptions="Center"
+                               FontSize="Medium"/>
+                    </VerticalStackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+            </Grid>
+
+            <!-- Sleep -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Sleep Hours (0-12)"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Source={x:Reference SleepSlider}, Path=Value, StringFormat='{0:F1} h'}"
+                       Style="{StaticResource ValueLabel}"/>
+            </Grid>
+            <Slider x:Name="SleepSlider"
+                    Minimum="0" Maximum="12" Value="7"
+                    ValueChanged="ValueChanged0"/>
+
+            <!--Stress -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Stress Level (0-10)"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Source={x:Reference StressSlider}, Path=Value, StringFormat='{0:F0}'}"
+                       Style="{StaticResource ValueLabel}"/>
+            </Grid>
+            <Slider x:Name="StressSlider"
+                    Minimum="0" Maximum="10" Value="3"
+                    ValueChanged="ValueChanged0"/>
+
+            <!-- Activity-->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Activity Minutes (0-120)"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Source={x:Reference ActivitySlider}, Path=Value, StringFormat='{0:F0} min'}"
+                       Style="{StaticResource ValueLabel}"/>
+            </Grid>
+            <Slider x:Name="ActivitySlider"
+                    Minimum="0" Maximum="120" Value="30"
+                    ValueChanged="ValueChanged0"/>
+            <!--Button for calculate-->
+            <Button Text="Calculate Wellness Score"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#0a0e29"
+                    TextColor="White"
+                    CornerRadius="16"
+                    Padding="14,10"/>
+
+            <Frame Style="{StaticResource CardFrame}">
+                <VerticalStackLayout Spacing="8">
+                    <Label x:Name="ScoreLabel" Text="Score: --" Style="{StaticResource BigScore}"/>
+                    <Label x:Name="StatusLabel" Text="Status: --" HorizontalOptions="Center"/>
+                    <Label Text="Recommendations" FontAttributes="Bold"/>
+                    <Label x:Name="RecLabel" Text="--"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
