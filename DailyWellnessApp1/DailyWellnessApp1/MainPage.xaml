@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <!--debug using ChatGPT-->
+<ContentPage
+    x:Class="DailyWellnessApp1.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Daily Wellness - Inputs">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="16">
+
+            <Label Text="Select Gender" FontSize="Title" HorizontalOptions="Center" />
+            <!--male session-->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+                <Border x:Name="MaleBorder" StrokeThickness="2" Stroke="#cccccc" BackgroundColor="#f7f7f7" StrokeShape="RoundRectangle 16">
+                    <Image Source="male.png" Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMaleTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+                <!--female session-->
+                <Border x:Name="FemaleBorder" Grid.Column="1" StrokeThickness="2" Stroke="#cccccc" BackgroundColor="#f7f7f7" StrokeShape="RoundRectangle 16">
+                    <Image Source="female.png" Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnFemaleTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+            </Grid>
+            <!--slider for sleep stress and acticity-->
+            <Label Text="Sleep Hours (last night)" FontAttributes="Bold" />
+            <Slider x:Name="SleepSlider" Minimum="0" Maximum="12" Value="7" />
+            <Label Text="{Binding Source={x:Reference SleepSlider}, Path=Value, StringFormat='{}{0:F1} h'}" HorizontalOptions="End" />
+
+            <Label Text="Stress Level (0 calm – 10 stressed)" FontAttributes="Bold" />
+            <Slider x:Name="StressSlider" Minimum="0" Maximum="10" Value="4" />
+            <Label Text="{Binding Source={x:Reference StressSlider}, Path=Value, StringFormat='{}{0:F0}'}" HorizontalOptions="End" />
+
+            <Label Text="Activity Minutes (today)" FontAttributes="Bold" />
+            <Slider x:Name="ActivitySlider" Minimum="0" Maximum="120" Value="30" />
+            <Label Text="{Binding Source={x:Reference ActivitySlider}, Path=Value, StringFormat='{}{0:F0} min'}" HorizontalOptions="End" />
+            <!-- button for next-->
+            <Button Text="Next → Result"
+                    Clicked="OnNextClicked"
+                    BackgroundColor="#000" TextColor="White"
+                    CornerRadius="20"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

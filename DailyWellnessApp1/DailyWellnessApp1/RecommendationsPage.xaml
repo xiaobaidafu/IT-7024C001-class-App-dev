@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--debug using ChatGPT-->
+<ContentPage
+    x:Class="DailyWellnessApp1.RecommendationsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Recommendations">
+      
+    <!--two button for going back to result or input-->
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="16">
+            <Label x:Name="HeaderLabel" FontSize="Title" FontAttributes="Bold" />
+            <Label x:Name="BodyLabel" FontSize="Medium" />
+            <HorizontalStackLayout Spacing="12" Margin="0,24,0,0">
+                <Button Text="← Back to Results" Clicked="OnBackToResultsClicked" CornerRadius="18"/>
+                <Button Text="← Back to Inputs" Clicked="OnBackToInputsClicked" CornerRadius="18"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

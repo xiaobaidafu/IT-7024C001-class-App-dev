@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--debug using ChatGPT-->
+<ContentPage
+    x:Class="DailyWellnessApp1.ResultPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Wellness Result">
+      <!-- label and button session-->
+    <VerticalStackLayout Spacing="16" Padding="16" HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="Wellness Score" FontSize="Title" />
+        <Label x:Name="ScoreLabel" FontSize="48" FontAttributes="Bold" />
+
+        <Label Text="Status" FontSize="Title" />
+        <Label x:Name="StatusLabel" FontSize="32" FontAttributes="Bold" />
+
+        <HorizontalStackLayout Spacing="12" Margin="0,24,0,0">
+            <Button Text="Recommendations →" Clicked="OnRecommendationsClicked"
+                    BackgroundColor="#222" TextColor="White" CornerRadius="18"/>
+            <!--<Button Text="← Back to Inputs" Clicked="OnBackToInputsClicked" CornerRadius="18"/>  could be optional-->
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
