@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Recipes_list.RecipesPage"
+             Title="RecipesPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid RowDefinitions="Auto,*">
+
+        
+        <Frame Grid.Row="0" BackgroundColor="LightBlue" Padding="10">
+            <Label Text="Recipes List"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"/>
+        </Frame>
+
+
+        <CollectionView Grid.Row="1"
+                        x:Name="RecipesCollection"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Margin="20" Padding="10">
+                        <Image HeightRequest="60"
+                               WidthRequest="60"
+                               Source="{Binding Image}"
+                               Aspect="AspectFill"/>
+                        <Label FontSize="Medium"
+                               Text="{Binding Title}"
+                               HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
