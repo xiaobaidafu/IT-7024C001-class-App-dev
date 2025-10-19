@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="login.SignupPage"
+             Title="SignupPage">
+    <ScrollView>
+        <!--create font end for user enter info-->
+        <VerticalStackLayout Padding="24" Spacing="14">
+            <Label Text="Create account" FontSize="24" FontAttributes="Bold"/>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="UserName"/>
+                <Entry x:Name="UsernameEntry" Placeholder="frnak" ClearButtonVisibility="WhileEditing"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Email"/>
+                <Entry x:Name="EmailEntry" Keyboard="Email" Placeholder="franky@email.com" ClearButtonVisibility="WhileEditing"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Password"/>
+                <Entry x:Name="PasswordEntry"  IsPassword="True" Placeholder="*********"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="6">
+                <Label Text="Confirm Password"/>
+                <Entry x:Name="ConfirmEntry"  IsPassword="True" Placeholder="*********"/>
+            </VerticalStackLayout>
+                <!--display error mssage and define color of the message-->
+            <Label x:Name="ErrorLabel" TextColor="Red" FontSize="12" IsVisible="False"/>
+            <!--a button that direct to next page-->
+            <Button Text="Sign Up" Clicked="OnSignUpClicked"/>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>
