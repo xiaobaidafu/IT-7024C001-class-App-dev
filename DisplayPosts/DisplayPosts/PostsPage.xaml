@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DisplayPosts.PostsPage"
+             Title="PostsPage"
+             Padding="16">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Label Grid.Row="0"
+               Text="news"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,0,0,12"/>
+
+        <CollectionView x:Name="PostsView"
+                        Grid.Row="1"
+                        ItemsLayout="VerticalList"
+                        SelectionMode="None"
+                             >
+        <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="12" Margin="0,0,0,16">
+
+                        <VerticalStackLayout Spacing="6" Margin="0,0,0,12">
+                        <Label Text="{Binding title}" FontAttributes="Bold" FontSize="16"/>
+                        <Label Text="{Binding body}" FontSize="14" LineBreakMode="WordWrap"/>
+                    </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            
+        </CollectionView.ItemTemplate>
+        
+    </CollectionView>
+    </Grid>
+</ContentPage>
