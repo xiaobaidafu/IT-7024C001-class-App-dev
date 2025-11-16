@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:UseOfMVVM.ViewModels"
+             xmlns:models="clr-namespace:UseOfMVVM.Models"
+             x:Class="UseOfMVVM.Views.ContactsPage"
+             x:DataType="vm:ContactsViewModel"
+             Title="ContactsPage">
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <ListView x:Name="ContactsListView"
+                  ItemsSource="{Binding Contacts}"
+                  ItemTapped="OnContactTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Contact">
+                    <TextCell Text="{Binding Name}"
+                              Detail="{Binding Email}"/>
+                   
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+            
+            
+        </ListView>
+
+        <Button Text="Add more Contacts"
+                Clicked="OnAddMoreClicked"/>
+        
+    </VerticalStackLayout>
+</ContentPage>
